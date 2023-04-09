@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V8</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css1/util.css">
+	<link rel="stylesheet" type="text/css" href="css1/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form   name="submission" onsubmit="return loginval()" oninput="clearform()" role="form" action="/login"  method="post" class="login100-form validate-form p-l-55 p-r-55 p-t-178" >
+					<span class="login100-form-title">
+						Log In
+					</span>
+
+					<div class="wrap-input100  m-b-16" data-validate="Please enter username">
+						<input class="input100" id="username" type="text" name="username" placeholder="username">
+						<span class="focus-input100"></span>
+					</div>
+                     <p class="text-danger text-center" ></p>
+					
+					
+                     
+
+                    <div class="wrap-input100 " data-validate = "Please enter password">
+						<input class=" input100" type="password" id="password" name="password" placeholder=" password">
+						<span class="focus-input100"></span>
+					</div>
+					<p class="text-danger text-center" ></p>
+
+                    
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							LogIn
+						</button>
+					</div>
+				
+
+					<div class="flex-col-c  p-b-40">
+                       
+						<span class="txt1 p-b-9">
+							already have an account?
+						</span>
+
+
+						<a href="/user-signup" class="txt3">
+							SignUp
+						</a>
+						<p style="color: red;" class="text-center">{{ loginerr}}</p>
+						<p> <a href="/user-otpemail" class="txt3">OTP login</a></p>
+						<p><a href="/changepassemail" class="txt3">Forgot Password</a></p>
+
+                      
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	
+	
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="/javascript/user-loginvalidation.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+{{!-- <!DOCTYPE html>
+<html>
+<head>
+<title>Creative Colorlib SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="/singupsec/sty.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1> LogIn Your Account</h1>
+		<div class="main-agileinfo">
+			<img width="200" src="images/logo.png" alt="">
+			<div class="agileits-top">
+				
+                
+				<form name="Submission"  onsubmit="return  userloginvalidateform()" oninput="removeForm()" role="form" action="/login" method="post">
+                    
+					<input type="text" name="username" placeholder="UserName" >
+					<p style="font-weight:600;  font-size:20px" id="loginerror-message" class="text-danger"></p>
+					<input  type="password" name="password" placeholder="Password" >
+					<p style="font-weight:600;  font-size:20px" id="loginerror-message" class="text-danger"></p>
+					 <p style="color: red;  font-weight:600;  font-size:20px" >{{loginerr}}</p>
+					
+					<input id="submit" name="submit" type="submit" value="LOGIN">
+					<p><a href="/changepassemail">Forgot Password</a></p>
+				</form>
+				<p>Don't have an Account? <a href="/user-signup"> Signup Now!</a></p>
+				<p> <a href="/user-otpemail">OTP login</a></p>
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
+		</div>
+		
+	</div>
+	<!-- //main -->
+	<script src="/javascripts/user-loginvalidation.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ --}}
+
+
+
+
+
+
+
+
+

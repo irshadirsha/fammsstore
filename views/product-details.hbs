@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/product/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                    <div class="tip">2</div>
+                </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                    <div class="tip">2</div>
+                </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="/product/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+ <header class="header_section">
+         <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+               <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav" style="">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                     </li>
+                     {{!-- <li class="nav-item dropdown" style="margin-right: -1px;">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span
+                                 class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="about.html">About</a></li>
+                           <li><a href="testimonial.html">Testimonial</a></li>
+                        </ul>
+                     </li> --}}
+                     <li class="nav-item" style="margin-right: -1px;">
+                        <a class="nav-link" href="/user-shop">Shop</a>
+                     </li>
+                     {{!-- <li class="nav-item">
+                        <a class="nav-link" href="/admin-viewproducts">Blog</a>
+                     </li> --}}
+                     {{!-- <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                     </li> --}}
+                     <li class="nav-item">
+                        <a class="nav-link" href="/whishlistshow"><i class="fa-regular fa-heart"></i></a>
+                     </li>
+                     {{!-- <li><a href="#"><span class="icon_heart_alt"></span>
+                           <div class="tip"></div>
+                        </a></li> --}}
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="/user-shopcart">
+                           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                              style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                              <g>
+                                 <g>
+                                    <path
+                                       d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                                          c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                 </g>
+                              </g>
+                              <g>
+                                 <g>
+                                    <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                                          C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                          c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                          C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                 </g>
+                              </g>
+                              <g>
+                                 <g>
+                                    <path
+                                       d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                 </g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                           </svg>
+                        </a>
+                     </li>
+
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="/user-profile"><i class="fa fa-user" aria-hidden="true"></i></a>
+                     </li>
+                     <form class="form-inline">
+                        {{!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                           <i class="fa fa-search" aria-hidden="true"></i>
+                        </button> --}}
+
+                       
+                        <li>
+                           <div class="dropdown">
+                              <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                 {{#if name}}
+                                 <a style="color: black;">{{name}}</a>
+                                 {{else}}
+                                 LOGIN
+                                 {{/if}}
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                 {{#if name}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-logout">Logout</a></li>
+                                 {{else}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-login">Login</a></li>
+                                 {{/if}}
+                              </ul>
+                           </div>
+                           {{!-- <a href="http://localhost:3000/user-login"> <button type="button"
+                                 class="btn btn-primary">LogIn</button></a> --}}
+                        </li>
+                     </form>
+                  </ul>
+               </div>
+            </nav>
+            <hr>
+         </div>
+      </header>
+
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="#">{{productcategory}}</a>
+                        <span>Essential structured blazer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Product Details Section Begin -->
+
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div   class="product__details__pic   ">
+                        <div style="height: 26rem;" class="product__details__pic__left product__thumb nice-scroll">
+                            {{#each singledata.productimage}}
+                            {{!-- <a class="pt active" href="#product-{{this}}"> --}}
+                                <img src="/productimage/{{this}}" alt=""  id="{{@index}}" onclick="zoom(this.id)">
+                            </a>
+                            {{/each}}
+                        </div>
+
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                                {{#each singledata.productimage}}
+                                <img  src="/productimage/{{this}}" id="bigimg" alt="">
+                                   
+                                {{/each}}
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        {{#itemdetails}}
+                        <form action="/user-shopcart/{{productid}}" method="post">
+                        
+                        <h3>{{productname}} <span><h3>Brand:{{productbrand}}</h3></span></h3>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span>( 138 reviews )</span>
+                        </div>
+                        <div class="product__details__price"> ₹{{productprice}}<span> </span></div>
+                       <p><h4>{{productcategory}}</h4></p>
+                        <p><h5>{{description}}</h5></p>
+                         <p ><h6>Available Stock:  {{stock}}</h6></p>
+                        <p ><h6>{{date}}</h6></p>
+
+                            
+                        <div class="product__details__button">
+                        
+                            
+                            {{!-- <input class="cart-btn" type="submit" ><span class="icon_bag_alt"></span> value=""Add to cart> --}}
+                             <button class="cart-btn" type="submit"><span class="icon_bag_alt"></span>Add TO
+                            Cart</button>
+                              </form>
+                              {{/itemdetails}}
+                            <ul>
+ 
+
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <span>Availability:</span>
+                                    <div class="stock__checkbox">
+                                        <label for="stockin">
+                                            In Stock
+                                            <input type="checkbox" id="stockin">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                               
+                                
+                                <li>
+                                    <span>Promotions:</span>
+                                    <p>Free shipping</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {{!-- <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <h6>Description</h6>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
+                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
+                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
+                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
+                                    consequat massa quis enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem.</p>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <h6>Specification</h6>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
+                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
+                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
+                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
+                                    consequat massa quis enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem.</p>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <h6>Reviews ( 2 )</h6>
+                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
+                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
+                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
+                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
+                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
+                                    consequat massa quis enim.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+            {{!-- <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="related__title">
+                        <h5>RELATED PRODUCTS</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
+                            <div class="label new">New</div>
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Buttons tweed blazer</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-2.jpg" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Flowy striped skirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 49.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
+                            <div class="label stockout">out of stock</div>
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-3.jpg" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Cotton T-Shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
+                            <ul class="product__hover">
+                                <li><a href="img/product/related/rp-4.jpg" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Slim striped pocket shirt</a></h6>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product__price">$ 59.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </section>
+
+
+
+
+    <!-- Product Details Section End -->
+
+    <!-- Instagram Begin -->
+
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full">
+                        <div class="logo_footer">
+                            <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
+                        </div>
+                        <div class="information_f">
+                            <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
+                            <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
+                            <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Menu</h3>
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonial</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Account</h3>
+                                        <ul>
+                                            <li><a href="#">Account</a></li>
+                                            <li><a href="#">Checkout</a></li>
+                                            <li><a href="#">Login</a></li>
+                                            <li><a href="#">Register</a></li>
+                                            <li><a href="#">Shopping</a></li>
+                                            <li><a href="#">Widget</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="widget_menu">
+                                <h3>Newsletter</h3>
+                                <div class="information_f">
+                                    <p>Subscribe by our newsletter and get update protidin.</p>
+                                </div>
+                                <div class="form_sub">
+                                    <form>
+                                        <fieldset>
+                                            <div class="field">
+                                                <input type="email" placeholder="Enter Your Mail" name="email" />
+                                                <input type="submit" value="Subscribe" />
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="/product/js/jquery-3.3.1.min.js"></script>
+    <script src="/product/js/bootstrap.min.js"></script>
+    <script src="/product/js/jquery.magnific-popup.min.js"></script>
+    <script src="/product/js/jquery-ui.min.js"></script>
+    <script src="/product/js/mixitup.min.js"></script>
+    <script src="/product/js/jquery.countdown.min.js"></script>
+    <script src="/product/js/jquery.slicknav.js"></script>
+    <script src="/product/js/owl.carousel.min.js"></script>
+    <script src="/product/js/jquery.nicescroll.min.js"></script>
+    <script src="/product/js/main.js"></script>
+
+     <script>
+        function zoom(id) {
+            img = document.getElementById(id).src
+            document.getElementById('bigimg').src = img
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/product/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/product/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    {{!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> --}}
+
+    <!-- Offcanvas Menu Begin -->
+    {{!-- <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+            <li><span class="icon_search search-switch"></span></li>
+            <li><a href="#"><span class="icon_heart_alt"></span>
+                    <div class="tip">2</div>
+                </a></li>
+            <li><a href="#"><span class="icon_bag_alt"></span>
+                    <div class="tip">2</div>
+                </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="/product/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </div> --}}
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+     <header class="header_section">
+         <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+               <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav" style="">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                     </li>
+                     {{!-- <li class="nav-item dropdown" style="margin-right: -1px;">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span
+                                 class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="about.html">About</a></li>
+                           <li><a href="testimonial.html">Testimonial</a></li>
+                        </ul>
+                     </li> --}}
+                     <li class="nav-item" style="margin-right: -1px;">
+                        <a class="nav-link" href="/user-shop">Shop</a>
+                     </li>
+                     {{!-- <li class="nav-item">
+                        <a class="nav-link" href="/admin-viewproducts">Blog</a>
+                     </li> --}}
+                     {{!-- <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                     </li> --}}
+                     <li class="nav-item">
+                        <a class="nav-link" href="/whishlistshow"><i class="fa-regular fa-heart"></i></a>
+                     </li>
+                     {{!-- <li><a href="#"><span class="icon_heart_alt"></span>
+                           <div class="tip"></div>
+                        </a></li> --}}
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="/user-shopcart">
+                           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                              style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                              <g>
+                                 <g>
+                                    <path
+                                       d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                                          c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                 </g>
+                              </g>
+                              <g>
+                                 <g>
+                                    <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                                          C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                          c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                          C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                 </g>
+                              </g>
+                              <g>
+                                 <g>
+                                    <path
+                                       d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                 </g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                              <g>
+                              </g>
+                           </svg>
+                        </a>
+                     </li>
+
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="/user-profile"><i class="fa fa-user" aria-hidden="true"></i></a>
+                     </li>
+                     <form class="form-inline">
+                        {{!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                           <i class="fa fa-search" aria-hidden="true"></i>
+                        </button> --}}
+
+                       
+                        <li>
+                           <div class="dropdown">
+                              <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                 {{#if name}}
+                                 <a style="color: black;">{{name}}</a>
+                                 {{else}}
+                                 LOGIN
+                                 {{/if}}
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                 {{#if name}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-logout">Logout</a></li>
+                                 {{else}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-login">Login</a></li>
+                                 {{/if}}
+                              </ul>
+                           </div>
+                           {{!-- <a href="http://localhost:3000/user-login"> <button type="button"
+                                 class="btn btn-primary">LogIn</button></a> --}}
+                        </li>
+                     </form>
+                  </ul>
+               </div>
+            </nav>
+            <hr>
+         </div>
+      </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="/"><i class="fa fa-home"></i> Home</a>
+                        <span>Wish List</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Shop Cart Section Begin -->
+    <section id="ddd" class="product_section layout_padding">
+
+        <div class="container">
+            {{!-- <button onclick="wishProductDelete('{{adminaddproduct.productid}}')">Remove</button> --}}
+            {{#if displaywishlist}}
+
+            <div class="row">
+                {{#each displaywishlist}}
+
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <button onclick="wishProductDelete('{{adminaddproduct.productid}}')"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                            <path
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                        </svg></button>
+                    <div class="box">
+                        <div class="option_container">
+                            <div class="options">
+                                <a href="/product-details/{{adminaddproduct._id}}" class="option1">
+                                    Add To Carts
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="img-box">
+
+                            <img src="/productimage/{{adminaddproduct.productimage.[0]}}" alt="">
+                        </div>
+                        <div style="display: flex;justify-content:center;" class="detail-box">
+                            <ul style="list-style-type:none;" class="list-group list-group-flush">
+                                <li>
+                                    <h5> {{adminaddproduct.productname}} </h5>
+                                </li>
+                                <li>
+                                    <h6> Rs:{{adminaddproduct.productprice}} </h6>
+                                </li>
+                                <li>
+                                    <h5>{{adminaddproduct.productbrand}}</h5>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <img style="width: 80%; height: 25rem;" src="/f6e464230662e7fa4c6a4afb92631aed.png"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+
+
+
+    <style>
+        .colored-toast.swal2-icon-error {
+            background-color: #f27474 !important;
+        }
+    </style>
+
+    <script>
+        function wishProductDelete(productId) {
+            console.log('ddddddd')
+            $.ajax({
+                url: '/deletewishlist/' + productId,
+                method: 'get',
+                success: (response) => {
+                    console.log(response);
+                    if (response.status == true) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-right',
+                            iconColor: 'white',
+                            customClass: {
+                                popup: 'colored-toast'
+                            },
+                            showConfirmButton: false,
+                            timer: 1000,
+                            timerProgressBar: true
+                        })
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Deleted'
+                        }).then(() => {
+                           $('#ddd').load('/whishlistshow  #ddd')
+                        });
+                    }
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+    <!-- Shop Cart Section End -->
+
+    <!-- Instagram Begin -->
+
+    <!-- Instagram End -->
+
+    <!-- Footer Section Begin -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="full">
+                        <div class="logo_footer">
+                            <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
+                        </div>
+                        <div class="information_f">
+                            <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
+                            <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
+                            <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Menu</h3>
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonial</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Account</h3>
+                                        <ul>
+                                            <li><a href="#">Account</a></li>
+                                            <li><a href="#">Checkout</a></li>
+                                            <li><a href="#">Login</a></li>
+                                            <li><a href="#">Register</a></li>
+                                            <li><a href="#">Shopping</a></li>
+                                            <li><a href="#">Widget</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="widget_menu">
+                                <h3>Newsletter</h3>
+                                <div class="information_f">
+                                    <p>Subscribe by our newsletter and get update protidin.</p>
+                                </div>
+                                <div class="form_sub">
+                                    <form>
+                                        <fieldset>
+                                            <div class="field">
+                                                <input type="email" placeholder="Enter Your Mail" name="email" />
+                                                <input type="submit" value="Subscribe" />
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="/product/js/jquery-3.3.1.min.js"></script>
+    <script src="/product/js/bootstrap.min.js"></script>
+    <script src="/product/js/jquery.magnific-popup.min.js"></script>
+    <script src="/product/js/jquery-ui.min.js"></script>
+    <script src="/product/js/mixitup.min.js"></script>
+    <script src="/product/js/jquery.countdown.min.js"></script>
+    <script src="/product/js/jquery.slicknav.js"></script>
+    <script src="/product/js/owl.carousel.min.js"></script>
+    <script src="/product/js/jquery.nicescroll.min.js"></script>
+    <script src="/product/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+
+
+</body>
+
+</html>
