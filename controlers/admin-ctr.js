@@ -2,7 +2,6 @@ const admindata = require('../models/adminmodels')
 const fileUpload = require('express-fileupload')
 fs = require('fs')
 const adminaddproduct = require('../models/adminaddmodels')
-// const admincategory=require('../models/admincategory')
 const { ObjectId } = require('mongodb')
 const { v4: uuidv4 } = require('uuid')
 const adminproductcategory = require('../models/admincategory')
@@ -11,9 +10,9 @@ const userorder = require('../models/ordermodel')
 const usercartdata = require('../models/cartmodels')
 const adminbannerdata = require('../models/bannermodel')
 const admincoupendata = require('../models/coupenmodel')
-
 var session = require('express-session')
 const { log } = require('console')
+const adminSession=require('../middleware/session')
 let errmsg
 let id
 let categoryid
@@ -24,17 +23,15 @@ let updateerror
 
 const adminGetlogin = function (req, res, next) {
     let admin = req.session.admin
-    if (admin) {
-        res.redirect('/admin-dashbord')
-    } else {
+   
         res.render('admin-login', { errmsg })
         errmsg = null
-    }
+    
 }
 const adminDashBord = async function (req, res, next) {
     let totalrevenue
     let admin = req.session.admin
-    if (admin) {
+    
         let usercount = await userdata.find().count()
         let ordercount = await userorder.findOne({ status: "delivered" }).count()
         let revenue = await userorder.aggregate([{ $match: { status: "delivered" } }, { $unwind: "$product" }, { $group: { _id: null, sum: { $sum: "$product.totalprice" } } }, { $project: { _id: 0 } }])
@@ -52,9 +49,7 @@ const adminDashBord = async function (req, res, next) {
         let pendingordercount = await userorder.findOne({ status: "Pending" }).count()
         console.log(pendingordercount);
         res.render('admin-dashbord', { usercount, ordercount, totalrevenue, pendingordercount })
-    } else {
-        res.redirect('/admin-login')
-    }
+   
 }
 
 const adminGetProduct = async function (req, res, next) {
@@ -212,7 +207,7 @@ const adminGetOrderDetails = async function (req, res, next) {
     console.log("kkkkkkkkkkkkkkkkk");
     console.log(dataorder);
     
-    if (stat == 'delivered'||stat=='Return confirmed') {
+    if (stat == 'delivered'||stat=='Item Returned') {
         orderid = null
         console.log(stat);
     }
@@ -277,46 +272,20 @@ const adminGetDeliveredOrder = async function (req, res, next) {
     res.redirect('/admin-orderdetails')
 }
 const adminGetConfirmOrder = async function (req, res, next) {
+    user=req.session.user
     confirmid = req.params.id
-
-    console.log(confirmid);
-    await userorder.updateOne({ _id: new ObjectId(confirmid) }, { $set: { status: 'Return confirmed'} })
     console.log("hhhhhhhhhhhhhhhhhhhhhhdddddddddddddddddddd");
+    console.log(confirmid);
+    await userorder.updateOne({ _id: new ObjectId(confirmid) }, { $set: { status: 'Item Returned'} })
+    
  
     await userorder.updateOne({ _id: new ObjectId(confirmid) }, { $set: {item:"return" } })
     await userorder.updateOne({ _id: new ObjectId(confirmid) }, { $unset: {admin:"return" } })
-    
-    console.log("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
-//   let cartAllProducts = await usercartdata.aggregate([
-//     { $match: { user: user } }, { $unwind: '$products' },
-//     { $project: { items: "$products.items", quantity: "$products.quantity" } },
-//     {
-//       $lookup: {
-//         from: 'adminaddproducts',
-//         localField: 'items',
-//         foreignField: 'productid',
-//         as: 'products'
-//       }
-//     },
-//     { $project: { items: 1, quantity: 1, products: { $arrayElemAt: ['$products', 0] } } }
-//   ])
-//   for (var i = 0; i < cartAllProducts.length; i++) {
-//     totalprice = cartAllProducts[i].quantity * cartAllProducts[i].products.productprice
-//     cartAllProducts[i].totalprice = totalprice
-//   }
-//   let grandtotal = 0;
-//   for (var i = 0; i < cartAllProducts.length; i++) {
-//     grandtotal += cartAllProducts[i].totalprice
-//   }
-//   let subgrandtotal = grandtotal
-//   grandtotal += 84
-//   let addwallet=grandtotal
-
-//     await userdata.updateOne({username:user},{$inc:{wallet:addwallet}})
+  
     res.redirect('/admin-orderdetails')
 }
 const adminGetSalesReport = async function (req, res, next) {
-    // let salesdata=await userorder.find()
+    
     let salesdatas = await userorder.aggregate([{ $match: { status: 'delivered' } }, { $unwind: "$product" }, { $project: { product: "$product.products", quantity: "$product.quantity", totalprice: "$product.totalprice", ordereduser: '$ordereduser', grandtotal: '$grandtotal', deliverydate: "$deliverydate",salesdate:"$salesdate" } }])
 
     console.log(salesdatas);
@@ -328,7 +297,7 @@ const adminGetSalesReport = async function (req, res, next) {
         res.render('admin-salesReport', { salesdatas })
         
     }
-    //  console.log(salesdata);
+    
 
 }
 const userGetSalesReportDaily = async function (req, res, next) {
@@ -472,7 +441,8 @@ const adminPostAddProduct = function (req, res, next) {
 }
 // post method admin update product
 const adminUpdateProduct = async function (req, res, next) {
-    const editid = req.params.id
+    if(req.files){
+        const editid = req.params.id
     let items = req.body
     let image = []
     image = req.files.productimage
@@ -501,6 +471,30 @@ const adminUpdateProduct = async function (req, res, next) {
     })
 
     res.redirect('/admin-product')
+    }else{
+        const editid = req.params.id
+        let items = req.body
+        let image = []
+        
+        
+           
+        
+        console.log(items + "aaaaaqqqwwwwwsssssssddddd")
+        await adminaddproduct.updateOne({ _id: editid }, {
+            $set: {
+                productname: items.productname,
+                productid: items.productid,
+                productbrand: items.productbrand,
+                productprice: items.productprice,
+                productcategory: items.productcategory,
+                productimage: items.productimage
+    
+            }
+        })
+    
+        res.redirect('/admin-product')
+    }
+   
 }
 
 

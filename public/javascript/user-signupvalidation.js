@@ -14,7 +14,7 @@ function signupVald(){
     if(fullname==""&&username==""&&useremail==""&&password==""&&confirm_password==""){
         let i=0
         while(i<pass.length){
-            pass[i].innerHTML="Please fill the field"
+            pass[i].innerHTML="Please Fill The Field"
             i++
         }
         return false
@@ -58,7 +58,7 @@ function signupVald(){
         return false
     }
     if(passwordRegex.test(password)==false){
-        pass[3].innerHTML="Enter proper password"
+        pass[3].innerHTML="Enter 1 Capital letter And number Only"
         return false
     }
     if(confirm_password==""){
@@ -66,7 +66,7 @@ function signupVald(){
         return false
     }
     if(confirm_password!=password){
-        pass[4].innerHTML="Password is incorrect"
+        pass[4].innerHTML="Password is Mismatching"
         return false
     }
     return true

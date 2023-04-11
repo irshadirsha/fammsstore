@@ -3,11 +3,12 @@ var router = express.Router();
 
 const adminget=require('../controlers/admin-ctr');
 const adminpost=require('../controlers/admin-ctr')
-
+const session=require('../middleware/session')
 const nocache = require("nocache");
+const adminNotLogin=require('../middleware/session')
 
 
-router.get('/admin-login',nocache(),adminget.adminGetlogin)
+router.get('/admin-login',adminNotLogin.sessionNotAdminLogin,nocache(),adminget.adminGetlogin)
 router.get('/admin-dashbord',adminget.adminDashBord)
 router.get('/admin-product',adminget.adminGetProduct)
 router.get('/admin-addproduct',adminget.adminGetAddproduct)
@@ -37,7 +38,7 @@ router.get('/pending/:id',adminget.adminGetPendingOrder)
 router.get('/delivered/:id',adminget.adminGetDeliveredOrder)
 router.get('/confirm/:id',adminget.adminGetConfirmOrder)
 router.get('/admin-salesReport',adminget.adminGetSalesReport)
-router.get('/salesReports',adminget.userGetSalesReportDaily)
+ router.get('/salesReports',adminget.userGetSalesReportDaily)
 
 // post method
 router.post('/login-admin',adminget.adminPostLogin)

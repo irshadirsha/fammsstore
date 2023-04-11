@@ -221,86 +221,7 @@
             <hr>
          </div>
       </header>
-{{!-- 
-<div class="container">
-   <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Index</th>
-      <th>Orderdate</th>
-      <th>Delivery Date</th>
-      
-      <th>Payment Method</th>
-      <th>Delivery Address</th>
-      <th>Total</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-     {{#each orderdatauser}}
-    <tr> 
-      <th>{{@index}}</th>
-      <td>{{ordereddate}}</td>
-      <td>{{deliverydate}}</td>
-      <td>{{paymentmethod}}</td>
-      <td>{{deliveryaddress.landmark}},{{deliveryaddress.town}},{{deliveryaddress.state}},{{deliveryaddress.pincode}},{{deliveryaddress.phonenumber}}</td>
-      
-      <td>{{grandtotal}}</td>
-      <td><button style="margin-top: 2px;" type="button"
-                    onclick="location.href='/ordered-productdata/{{_id}}'" class="btn btn-primary">Details</button></td>
-    </tr>
-     {{/each }}
-  </tbody>
-</table>
-</div> --}}
 
-{{!-- {{#each orderdatauser}}
-<div class="row">
-    <div class="container">
-        <div class="col-12">
-            <div class="p-3 ">
-                <div style="background-color: aliceblue; border: 1px solid black; padding: 10px; position: relative;">
-                    <h6>Ordered Date: {{ordereddate}}</h6>
-                    <h6>Payment Method: {{paymentmethod}}</h6>                
-                    <h6>Delivery Address: {{deliveryaddress.landmark}},{{deliveryaddress.town}},{{deliveryaddress.state}},{{deliveryaddress.pincode}}</h6>
-                    <h6>Delivery Date: {{deliverydate}}</h6>
-                    <h6>Total Price:Rs:{{grandtotal}}</h6>
-                    <h6>Status: {{status}}</h6>
-                    <div class="p-4" style="position: absolute; top: 39%; right: 0; transform: translateY(-50%);">
-                        <a href="/ordered-productdata/{{_id}}" class="btn btn-outline-info"><h6>Details</h6></a>
-                     
-                     {{#if returnstatus}}                
-                  <div class="p-4" style="position: absolute; top: 39%; right: 0;margin-top: 75px; transform: translateY(-50%);">                 
-                      <button  onclick="location.href='/addtowallet/{{_id}}/{{grandtotal}}'"
-                    class="btn btn-outline-info">Return</button>
-                    
-                     {{else}}
-                     {{#if item}}                
-                   <div class="p-4" style="position: absolute; top: 39%; right: 0;margin-top: 75px; transform: translateY(-50%);">
-                        <h6 class="text-success">Successfully Returned</h6>
-                    </div>   
-                    
-                     {{else}}
-                                 
-                    
-                     
-                   <div class="p-4" style="position: absolute; top: 39%; right: 0;margin-top: 75px; transform: translateY(-50%);">
-                        <h6 class="text-warning">Request  Processing</h6>
-                    </div>                  
-                    
-                      {{/if}}
-                      {{/if}}
-                      
-                   </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-
-{{/each}} --}}
 {{#each orderdatauser}}
 <div class="container">
 <div class="row">
@@ -310,7 +231,7 @@
             <div class="p-3 mb-3" style="background-color: aliceblue; border: 1px solid black;">
                 <h6>Ordered Date: {{ordereddate}}</h6>
                 <h6>Payment Method: {{paymentmethod}}</h6>                
-                <h6>Delivery Address: {{deliveryaddress.landmark}},{{deliveryaddress.town}},{{deliveryaddress.state}},{{deliveryaddress.pincode}}</h6>
+                <h6>Delivery Address: {{deliveryaddress.landmark}},{{deliveryaddress.town}}<br>{{deliveryaddress.state}},{{deliveryaddress.pincode}}</h6>
                 <h6>Delivery Date: {{deliverydate}}</h6>
                 <h6>Total Price:Rs:{{grandtotal}}</h6>
                 <h6>Status: {{status}}</h6>

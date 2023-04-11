@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/product/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/product/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/product/css/style.css" type="text/css">
+
+    
 </head>
 
 <body>
@@ -66,7 +68,7 @@
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav" style="">
-                     <li class="nav-item active">
+                     <li class="nav-item ">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                      </li>
                      {{!-- <li class="nav-item dropdown" style="margin-right: -1px;">
@@ -94,7 +96,7 @@
                            <div class="tip"></div>
                         </a></li> --}}
 
-                     <li class="nav-item">
+                     <li class="nav-item active">
                         <a class="nav-link" href="/user-shopcart">
                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
@@ -267,8 +269,8 @@
                                     <td class="cart__close">
                                         
                                         <button style="width: 3.5rem;height: 3.5rem; border-radius: 60%;"
-                                            onclick="cartProductDelete('{{_id}}','{{items}}')"><span
-                                                class="icon_close"></span></button>
+                                            onclick="cartProductDelete('{{_id}}','{{items}}')"><span 
+                                                class="icon_close" ></span></button>
 
                                     </td>
 
@@ -301,6 +303,7 @@
                             <button type="submit" class="site-btn">Apply</button>
                         </form>
                         <h5 style="color: red;">{{coupenerr}}</h5>
+                          <h5 style="color:green;">{{success}}</h5>
 
                     </div>
                 </div>
