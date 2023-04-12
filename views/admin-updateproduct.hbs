@@ -530,15 +530,7 @@
                                     <p style="font-weight:600;  font-size:15px" id="error-message" class="text-danger">
                                     </p>
 
-                                    {{!-- <div class="form-group">
-                                        <label for="productcategory">Product Category:</label>
-
-                                        <input type="text" class="form-control" id="productcategory"
-                                            value="{{productcategory}}" name="productcategory"
-                                            placeholder="Enter Product category">
-                                        <div class="invalid-feedback">Product category Can't Be Empty</div>
-
-                                    </div> --}}
+                                   
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text">Product Category</label>
@@ -556,16 +548,7 @@
 
 
                                     <p>Product Image:</p>
-                                   
-
-                                    <button class="btn btn-dark mt-5 mx-auto d-block" type="submit">Update
-                                        Product</button>
-                            </form>
-
-
-
-                            {{!-- {{#each productimage}} --}}
-                            <div class="row"
+                                    <div class="row"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr)); grid-gap: .1rem;">
                                 {{#each productimage}}
                                 <div class="col" style="width: 10rem; height: 12rem;">
@@ -579,7 +562,10 @@
                                 {{/each}}
                                 <br>
                             </div>
-                           
+
+                                    <button class="btn btn-dark mt-5 mx-auto d-block" type="submit">Update
+                                        Product</button>
+                            </form>
 
                             {{/edit}}
                     </div>

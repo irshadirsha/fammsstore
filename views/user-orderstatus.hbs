@@ -137,28 +137,27 @@
 
 
                      <li>
-                        <div class="dropdown">
-                           <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              {{#if name}}
-                              <a style="color: black;">{{name}}</a>
-                              {{else}}
-                              LOGIN
-                              {{/if}}
-                           </a>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              {{#if name}}
-                              <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
-                                    href="/user-logout">Logout</a></li>
-                              {{else}}
-                              <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
-                                    href="/user-login">Login</a></li>
-                              {{/if}}
-                           </ul>
-                        </div>
-                        {{!-- <a href="http://localhost:3000/user-login"> <button type="button"
-                              class="btn btn-primary">LogIn</button></a> --}}
-                     </li>
+                           <div class="dropdown">
+                              <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                 {{#if fullname}}
+                                  <a style="color: black;font-weight: 700;">{{fullname}}</a>
+                                 {{else}}
+                                 LOGIN
+                                 {{/if}}
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                 {{#if fullname}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-logout">Logout</a></li>
+                                 {{else}}
+                                 <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
+                                       href="/user-login">Login</a></li>
+                                 {{/if}}
+                              </ul>
+                           </div>
+                          
+                        </li>
                   </form>
                </ul>
             </div>

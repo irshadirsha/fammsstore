@@ -14,14 +14,6 @@ var fileUpload=require('express-fileupload')
 var hbs = require('express-handlebars');
 const hb = hbs.create({})
 
-// view engine setup
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'hbs');
-
-
-// //engine path setted to partial
-// app.engine("hbs",hbs.engine({extname:"hbs",defaultLayout:"layout",layoutsDir:_dirname+"/views/layout",partialsDir:_dirname+'/views/partial'}))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -31,7 +23,7 @@ hb.handlebars.registerHelper('eq', function (a, b) {
 });
 
 
-app.use(session({secret:"Key",cookie:{maxAge:600000000},resave:false,saveUninitialized:true}))
+app.use(session({secret:"Key",cookie:{maxAge:60000*3*10},resave:false,saveUninitialized:true}))
 
 app.use(logger('dev'));
 app.use(express.json());

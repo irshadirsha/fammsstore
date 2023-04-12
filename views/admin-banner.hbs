@@ -105,7 +105,7 @@
                             </a>
                         </li>
 
-                        <li class=" sidebar-layout">
+                        <li class=" sidebar-layout active ">
                             <a href="/admin-banner" class="svg-icon">
                                 <i class="">
                                    <svg class="svg-icon" width="18" id="iq-ui-1-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -595,6 +595,15 @@
 
         </div>
     </div>
+     <script>
+
+  const rows = document.querySelectorAll('tr');
+  rows.forEach((row, index) => {
+    if (index > 0) { // Skip the first row (header)
+      row.cells[0].textContent = index;
+    }
+  });
+</script>
     <!-- Wrapper End-->
     <footer class="iq-footer">
         <div class="container-fluid">

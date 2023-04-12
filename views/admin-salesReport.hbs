@@ -125,8 +125,8 @@
                             </a>
                         </li>
 
-                        <li class=" sidebar-layout">
-                            <a href="/admin-salesReport" class="svg-icon">
+                        <li class=" sidebar-layout active">
+                            <a href="/admin-salesReport" class="svg-icon ">
                                 <i class="">
                                    <svg class="svg-icon" width="18" id="iq-ui-1-14" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" style="stroke-dasharray: 90, 110; stroke-dashoffset: 0;"></path>
@@ -484,62 +484,14 @@
 
         <div class="content-page">
 
-            <!DOCTYPE html>
-            <html lang="en">
-
-            <head>
-                <title>Generate PDF</title>
-                <style>
-                   
-
-                    .card {
-                        box-sizing: content-box;
-                        width: 300px;
-                        height: 400px;
-                        padding: 30px;
-                        border: 1px solid black;
-                        font-style: sans-serif;
-                        background-color: #f0f0f0;
-                    }
-
-                    h2 {
-                        text-align: center;
-                        color: #24650b;
-                    }
-                </style>
-            </head>
-
-            <body>
-                <div class="container">
-                    {{!-- <button id="pdfButton"><b>Generate PDF</b></button> --}}
-                    <button  id="pdfButton" onclick="window.print()"><b>Generate PDF</b></button>
-
-                </div>
-                <script>
-                    var button = document.getElementById("pdfButton");
-                    var makepdf = document.getElementById("generatePDF");
-                    button.addEventListener("click", function () {
-                        var mywindow = window.open("", "PRINT", "height=600,width=600");
-                        mywindow.document.write(makepdf.innerHTML);
-                        mywindow.document.close();
-                        mywindow.focus();
-                        mywindow.print();
-                        return true;
-                    });
-                </script>
-            </body>
-
-            </html>
-
-
+           
+            <button  onclick="printTable()">Generate PDF</button> 
              <br>
-            <button onclick="exportToExcel()">Export to Excel</button>
-
-         
+             <br>
+            <button  onclick="exportToExcel()">Export to Excel</button>                  
             <br>
             <br>
             <div class="container-fluid">
-
                 <a class="btn btn-primary" href="/salesReports/?name=day" role="button"
                     style="width: 5rem;">Daily</a>
                 <a class="btn btn-primary" href="/salesReports/?name=month" role="button"
@@ -549,11 +501,9 @@
                 <div class="row">
                        <h3>Sales Report</h3>
                     <div class="col-lg-12  col-sm-6  col-sm-12">
-
                         <div id="generatePDF" class="card-body">
                             <div class="table-responsive">
-
-                                <table  id="myTable" id="datatable" class="table data-table table-striped table-bordered">
+                                <table id="datatable" id="myTable" id="datatable" class="table data-table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -562,7 +512,6 @@
                                             <th>Quantity</th>
                                             <th>Price</th>
                                             <th>TotalPrice</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -582,7 +531,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script>
@@ -607,6 +555,19 @@
             return buf;
         }
     </script>
+     
+       {{!-- ////////////////////////////////////////////// --}}
+            <script>
+                function printTable() {
+			var table = document.getElementById("datatable");
+			var newWin = window.open('', 'Print-Window');
+			newWin.document.open();
+			newWin.document.write('<html><body onload="window.print()">' + table.outerHTML + '</html>');
+			newWin.document.close();
+			setTimeout(function () { newWin.close(); }, 10);
+		}
+            </script>
+            {{!-- ///////////////////////////////////// --}}
 
     <!-- Wrapper End-->
     <footer class="iq-footer">

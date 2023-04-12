@@ -21,6 +21,10 @@
    <link href="css/style.css" rel="stylesheet" />
    <!-- responsive style -->
    <link href="css/responsive.css" rel="stylesheet" />
+
+   <!-- Include the necessary jQuery library -->
+
+
 </head>
 
 <body>
@@ -134,19 +138,19 @@
                            <i class="fa fa-search" aria-hidden="true"></i>
                         </button> --}}
 
-                       
+
                         <li>
                            <div class="dropdown">
                               <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                  data-bs-toggle="dropdown" aria-expanded="false">
-                                 {{#if name}}
-                                 <a style="color: black;">{{name}}</a>
+                                 {{#if fullname}}
+                                 <a style="color: black;font-weight: 700;">{{fullname}}</a>
                                  {{else}}
                                  LOGIN
                                  {{/if}}
                               </a>
                               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 {{#if name}}
+                                 {{#if fullname}}
                                  <li><a style="color: black;border-radius: 80rem;" class="dropdown-item"
                                        href="/user-logout">Logout</a></li>
                                  {{else}}
@@ -155,21 +159,21 @@
                                  {{/if}}
                               </ul>
                            </div>
-                           {{!-- <a href="http://localhost:3000/user-login"> <button type="button"
-                                 class="btn btn-primary">LogIn</button></a> --}}
+                          
                         </li>
                      </form>
                   </ul>
                </div>
             </nav>
+
          </div>
       </header>
+
       <!-- end header section -->
       <!-- slider section -->
-
+      <!-- Carousel wrapper -->
       <div class="container-fluid">
          <div class="row">
-
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -177,12 +181,12 @@
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                      aria-label="Slide 2"></button>
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                     aria-label="Slide 3"></button>
                </div>
 
                <div class="carousel-inner">
                   <div class="carousel-item active">
-                     <img style="height: 80vh;" src="/bannerimages/{{defaltimg}}" class="d-block w-100" alt="...">
+                     <img width="100%" src="/bannerimages/{{defaltimg}}" class="d-block w-100" alt="...">
                      <div class="carousel-caption d-none d-md-block">
                         <h3>{{defaltimg.maintitle1}}</h3>
                         <p>{{defaltimg.maintitle2}}</p>
@@ -190,10 +194,10 @@
                   </div>
                   {{#each pushbanner}}
                   <div class="carousel-item ">
-                     <img style="height: 80vh;" src="bannerimages/{{bannerpicture}}" class="d-block w-100" alt="...">
+                     <img width="100%" src="bannerimages/{{bannerpicture}}" class="d-block w-100" alt="...">
                      <div class="carousel-caption d-none d-md-block">
-                        <p style="font-size: 50px;">{{maintitle1}}</p>
-                        <h1>{{maintitle2}}</h1>
+                        <p style="font-size: 50px;font-style: italic; color: black;">{{maintitle1}}</p>
+                        <p style="font-size: 40px; color: black;">{{maintitle2}}</p>
                      </div>
                   </div>
                   {{/each}}
@@ -443,7 +447,7 @@
                         Free Shiping
                      </h5>
                      <p>
-                         We have Free Shipping  For All Ordered Product
+                        We have Free Shipping For All Ordered Product
                      </p>
                   </div>
                </div>
@@ -468,7 +472,7 @@
                         Best Quality
                      </h5>
                      <p>
-                         We have The Only  Best Quality Product
+                        We have The Only Best Quality Product
                      </p>
                   </div>
                </div>
@@ -479,7 +483,7 @@
    <!-- end why section -->
 
    <!-- arrival section -->
-   
+
    <!-- end arrival section -->
 
    <!-- product section -->
@@ -499,7 +503,7 @@
                      <div class="options">
 
 
-                        
+
                         <a href="/product-details/{{_id}}" class="option2">
                            View Products
                         </a>
@@ -746,7 +750,7 @@
    <!-- custom js -->
    <script src="js/custom.js"></script>
 
-  
+
 </body>
 
 </html>

@@ -22,17 +22,16 @@ let finddata
 let updateerror
 
 const adminGetlogin = function (req, res, next) {
-    let admin = req.session.admin
-   
         res.render('admin-login', { errmsg })
-        errmsg = null
-    
+        errmsg = null   
 }
 const adminDashBord = async function (req, res, next) {
     let totalrevenue
     let admin = req.session.admin
     
         let usercount = await userdata.find().count()
+        let blockeduser= await userdata.find({status:false}).count()
+        console.log(blockeduser);
         let ordercount = await userorder.findOne({ status: "delivered" }).count()
         let revenue = await userorder.aggregate([{ $match: { status: "delivered" } }, { $unwind: "$product" }, { $group: { _id: null, sum: { $sum: "$product.totalprice" } } }, { $project: { _id: 0 } }])
         console.log(revenue);
@@ -41,74 +40,41 @@ const adminDashBord = async function (req, res, next) {
         } else {
             totalrevenue = 0
         }
-
-
         console.log("rrrrrrrrrrrrrrrrrrrrrrr");
         console.log(ordercount);
         console.log(usercount);
         let pendingordercount = await userorder.findOne({ status: "Pending" }).count()
         console.log(pendingordercount);
-        res.render('admin-dashbord', { usercount, ordercount, totalrevenue, pendingordercount })
-   
+        res.render('admin-dashbord', { usercount, ordercount, totalrevenue, pendingordercount ,blockeduser})   
 }
 
-const adminGetProduct = async function (req, res, next) {
-    let admin = req.session.admin
-    if (admin) {
+const adminGetProduct = async function (req, res, next) {  
         let producttable = await adminaddproduct.find({ status: { $nin: false } })
-        res.render('admin-product', { producttable })
-    } else {
-        res.redirect('/admin-login')
-    }
+        res.render('admin-product', { producttable })  
 }
 
-const adminGetAddproduct = async function (req, res, next) {
-    let admin = req.session.admin
-    if (admin) {
+const adminGetAddproduct = async function (req, res, next) {   
         let categoryadd = await adminproductcategory.find()
-        res.render('admin-addproduct', { categoryadd })
-    } else {
-        res.redirect('/admin-login')
-    }
+        res.render('admin-addproduct', { categoryadd })  
 }
 const adminGetUpdateproduct = async function (req, res, next) {
-    admin = req.session.admin
-    if (admin) {
+  
         id = req.params.id
         const edit = await adminaddproduct.find({ _id: id })
         console.log(edit);
-
-        console.log("[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[");
-
          categoryupdt = await adminproductcategory.find()
          console.log(categoryupdt);
-         console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
-  
-           
+       
             res.render('admin-updateproduct', { edit, categoryupdt })
-    
-    } else {
-        res.redirect('/admin-login')
-    }
 }
 const adminGetViewuser = async function (req, res, next) {
-    admin = req.session.admin
-    if (admin) {
         let listtable = await userdata.find()
         res.render('admin-viewuser', { listtable })
-    } else {
-        res.redirect('/admin-login')
-    }
 }
 const adminGetCategory = async function (req, res, next) {
-    admin = req.session.admin
-    if (admin) {
         let categorytable = await adminproductcategory.find()
         res.render('admin-category', { categorytable, categoryerror })
         categoryerror = null;
-    } else {
-        res.redirect('/admin-login')
-    }
 }
 const adminDeleteProduct = async function (req, res, next) {
     let id = req.params.id
@@ -176,10 +142,6 @@ const adminGetViewProduct = function (req, res, next) {
 const adminGetOrderList = async function (req, res, next) { 
     finddata = await userorder.find()
     console.log(finddata);
-    //  let datass=finddata.product[0].products
-    //       console.log(datass)    
-    //      let orders=await userorder.aggregate([{$unwind:"$product"}])
-    //      console.log(orders);  
     res.render('admin-orderlist', { finddata })
 }
 const adminGetOrderWithout = function (req, res, next) {
@@ -199,10 +161,6 @@ const adminGetOrderDetails = async function (req, res, next) {
         console.log(stat);
         console.log("ssssssssssss");
     }
-
-    // console.log(orderdata);
-    // let info=orderdata.product[0].products
-    // console.log(info);
     let dataorder = await userorder.aggregate([{ $match: { _id: new ObjectId(orderid) } }, { $unwind: "$product" }, { $project: { product: '$product.products', paymentid: '$product.products.paymentid' } }])
     console.log("kkkkkkkkkkkkkkkkk");
     console.log(dataorder);
@@ -212,14 +170,10 @@ const adminGetOrderDetails = async function (req, res, next) {
         console.log(stat);
     }
     res.render('admin-orderdetails', { dataorder, orderid, stat })
-
-
 }
-
 let adminGetBanner = async function (req, res, next) {
     let bannerinfo = await adminbannerdata.find()
     console.log(bannerinfo);
-
     res.render('admin-banner', { bannerinfo })
 }
 
@@ -235,7 +189,6 @@ const adminGetEnableBanner = async function (req, res, next) {
 }
 const adminGetCoupen = async function (req, res, next) {
     let coupendetail = await admincoupendata.find()
-
     res.render('admin-coupen', { coupendetail })
 }
 const adminGetCoupenRemove = async function (req, res, next) {
@@ -334,7 +287,7 @@ const userGetSalesReportDaily = async function (req, res, next) {
             }, { $project: { product: "$product.products", quantity: "$product.quantity", totalprice: "$product.totalprice", ordereduser: '$ordereduser', grandtotal: '$grandtotal', deliverydate: "$deliverydate",salesdate:"$salesdate" } }
         ])
 
-        console.log("dddddddddddddddddddddddddddddddddddddddddddddddd");
+        
         console.log(dailysalesReport);
         req.session.report = dailysalesReport
     } else if (salesParam == "month"){
@@ -365,11 +318,11 @@ const userGetSalesReportDaily = async function (req, res, next) {
             }, { $project: { product: "$product.products", quantity: "$product.quantity", totalprice: "$product.totalprice", ordereduser: '$ordereduser', grandtotal: '$grandtotal', deliverydate: "$deliverydate",salesdate:"$salesdate" } }
         ])
        
-        console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+       
         console.log(monthlysalesReport);
        
         req.session.report = monthlysalesReport
-        console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+       
     }else{
         lifetimesalesReport = await userorder.aggregate([
             {
@@ -381,10 +334,7 @@ const userGetSalesReportDaily = async function (req, res, next) {
             { $project: { product: "$product.products", quantity: "$product.quantity", totalprice: "$product.totalprice", ordereduser: '$ordereduser', grandtotal: '$grandtotal', deliverydate: "$deliverydate",salesdate:"$salesdate" }}
              
           ])
-        //   console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-        //   console.log(lifetimesalesReport);
-        //   console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-        //   req.session.report = lifetimesalesReport
+       
       }
     
 
@@ -465,7 +415,8 @@ const adminUpdateProduct = async function (req, res, next) {
             productbrand: items.productbrand,
             productprice: items.productprice,
             productcategory: items.productcategory,
-            productimage: items.productimage
+            productimage: items.productimage,
+            stock:items.stock
 
         }
     })
@@ -487,7 +438,8 @@ const adminUpdateProduct = async function (req, res, next) {
                 productbrand: items.productbrand,
                 productprice: items.productprice,
                 productcategory: items.productcategory,
-                productimage: items.productimage
+                productimage: items.productimage,
+                stock:items.stock
     
             }
         })

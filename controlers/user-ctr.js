@@ -25,51 +25,42 @@ var instance = new Razorpay({
   key_secret:process.env.KEY_SECRET,
 });
 // let singleid
-let loginerr
-let errormassege
+// let loginerr
+// let errormassege
 let otpEmail
 let otp
 let singledata
 let changeotp
 let passerr
 let checkmailchange
-let categoryid
-let allproducts
-let name
+// let categoryid
+// let allproducts
 let changeotpEmail
 let proObj
-// let grandtotal
-// let cartAllProducts
 let totalprice
 let passaddress
 let passerrmsg
 let coupenerr
-let orderss
-// let subgrandtotal
 let carterr
 let categories
 /* GET method. */
 const userGetHome = async function (req, res, next) {
   try {
+  let fullname=req.session.name
     let pushdatahome = await adminaddproduct.find({ status: { $nin: false } }).limit(8)
-
     let defaltimg = await adminbannerdata.find({ status: true }).limit(1)
-    let pushbanner = await adminbannerdata.find({ status: true }).skip(1)
-  
-    defaltimg = defaltimg[0].bannerpicture[0]
-  
-    res.render('user-home', { pushdatahome, name, pushbanner, defaltimg });
-  
+    let pushbanner = await adminbannerdata.find({ status: true }).skip(1).limit(3)
+    defaltimg = defaltimg[0].bannerpicture[0] 
+    res.render('user-home', { pushdatahome, fullname, pushbanner, defaltimg }); 
   } catch (error) {
     console.log(error);
     next()
   }
- 
 }
 const userGetSignup = function (req, res, next) {
   try {
     let user = req.session.user
- 
+    errormassege=req.session.errormassege
     res.render('user-signup', { errormassege })
     errormassege = null;
   
@@ -81,6 +72,7 @@ const userGetSignup = function (req, res, next) {
 const userGetLogin = function (req, res, next) {
   try {
     user = req.session.user
+    let loginerr=req.session.loginerr
     if (user) {
       res.redirect('/')
     } else {
@@ -133,13 +125,14 @@ const userGetOtpVerification = function (req, res, next) {
 
 const UserGetSingleProduct = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     singleid=req.session.singleid
   await adminaddproduct.find({ _id: new ObjectId(singleid) }).then((details) => {
     singledata = []
     singledata = details[0]
     itemdetails = details
   })
-  res.render('product-details', { singledata,name, itemdetails })
+  res.render('product-details', { singledata,fullname, itemdetails })
   
   } catch (error) {
     console.log(error);
@@ -160,6 +153,7 @@ const UserGetSingleProductId = function (req, res, next) {
 }
 const userGetShopCart = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     user = req.session.user
   // if (user) {
   console.log("userrrrrrrrrrrrrrrrrrrrrrr")
@@ -214,7 +208,7 @@ const userGetShopCart = async function (req, res, next) {
     }
   }
   // await userdata.updateOne({ username: req.session.user }, { $addToSet: { usedcoupen: coupensid } })
-  res.render('user-shopcart', { success,cartAllProducts,name, grandtotal, subgrandtotal, coupenerr, carterr })
+  res.render('user-shopcart', { success,cartAllProducts,fullname, grandtotal, subgrandtotal, coupenerr, carterr })
   coupenerr = null;
   req.session.coupen = null
   carterr = null
@@ -227,6 +221,7 @@ const userGetShopCart = async function (req, res, next) {
 }
 const UserGetCheckOut = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     user = req.session.user
     console.log(user);
     // if (user) {
@@ -301,7 +296,7 @@ const UserGetCheckOut = async function (req, res, next) {
         }
   
   
-        res.render('check-out', { finalamount,name, grandtotal, walletpass, subgrandtotal, addressdetails, cartAllProducts, totalprice })
+        res.render('check-out', { finalamount,fullname, grandtotal, walletpass, subgrandtotal, addressdetails, cartAllProducts, totalprice })
       }
     // } else {
     //   res.redirect('/user-login')
@@ -352,17 +347,19 @@ const UserGetAllProduct = async function (req, res, next) {
 const UserGetUserShopProduct = async function (req, res, next) {
   try {
     user = req.session.user
+    let fullname=req.session.name
   // if (user) {
-
+   let categoryid=req.session.categoryid
   if (categoryid == null) {
     let pushdata = await adminaddproduct.find({ status: { $nin: false } })
     categories = await adminproductcategory.find()
-    res.render('user-shop', { pushdata,name, categories })
+
+    res.render('user-shop', { pushdata,fullname, categories })
   } else {
     let pushdata = await adminaddproduct.find({ status: { $nin: false } })
     categories = await adminproductcategory.find({})
     pushdata = await adminaddproduct.find({ $and: [{ productcategory: categoryid }, { status: { $nin: false } }] })
-    res.render('user-shop', { pushdata,name, categories })
+    res.render('user-shop', { pushdata,fullname, categories })
     categoryid = null
   }
 
@@ -377,7 +374,8 @@ const UserGetUserShopProduct = async function (req, res, next) {
 }
 const UsergetCategoryPass = function (req, res, next) {
   try {
-    categoryid = req.params.addcategory
+    req.session.categoryid = req.params.addcategory
+
   res.redirect('/user-shop')
   } catch (error) {
     console.log(error);
@@ -388,11 +386,12 @@ const UsergetCategoryPass = function (req, res, next) {
 const UserGetUserProfile = async function (req, res, next) {
   try {
     user = req.session.user
+    let fullname=req.session.name
     // if (user) {
       let userinformation = await userdata.find({ username: user })
       let addressinfo = await useraddress.findOne({ user: user })
       let walletshow = await userdata.findOne({ username: user })
-      res.render('user-profile', { userinformation,name, addressinfo, walletshow })
+      res.render('user-profile', { userinformation,fullname, addressinfo, walletshow })
   
     // } else {
     //   res.redirect('/user-login')
@@ -461,6 +460,7 @@ const  userGetOrderStatus = async function (req, res, next) {
 const userGetEditAddress = async function (req, res, next) {
   try {
     user = req.session.user
+    let fullname=req.session.name
   // if (user) {
     let adds = await useraddress.findOne({ user: user })
     if (adds == null) {
@@ -470,7 +470,7 @@ const userGetEditAddress = async function (req, res, next) {
     console.log(adds)
     let alladdress = adds.address
     console.log(alladdress);
-    res.render('editaddress', { alladdress,name })
+    res.render('editaddress', { alladdress,fullname })
   // } else {
   //   res.redirect('/')
   // }
@@ -508,11 +508,12 @@ const userGetCpange = function (req, res, next) {
 }
 const UserOrderList = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     user = req.session.user
     let orderdatauser = await userorder.find({ ordereduser: user })
    
     console.log(orderdatauser);
-    res.render('order-list', { orderdatauser,name })
+    res.render('order-list', { orderdatauser,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -533,14 +534,14 @@ let historyid
 const UserOrderProductwithoutId = async function (req, res, next) {
   try {
     user = req.session.user
- 
+    let fullname=req.session.name
   console.log(historyid)
   let userorderstatus = await userorder.aggregate([{ $match: { _id: new ObjectId(historyid) } }, { $unwind: "$product" }, { $project: { product: "$product.products", grandtotal: "$grandtotal", returnstatus: "$returnstatus" } }])
   console.log(userorderstatus);
   // let removebtn=userorder.findOne({$and:[{_id:new ObjectId(historyid)},{returnstatus:false}]})
   // console.log(removebtn);
 
-  res.render('ordered-productdata', { userorderstatus,name })
+  res.render('ordered-productdata', { userorderstatus,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -549,10 +550,11 @@ const UserOrderProductwithoutId = async function (req, res, next) {
 }
 const userGetFilterBelone = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     bellowfivehundred = await adminAddProduct.find({ $and: [{ productprice: { $gt: 0, $lt: 500 } }, { status: { $nin: false } }] })
     pushdata = bellowfivehundred
     console.log(pushdata,);
-    res.render('user-shop', { pushdata, categories,name })
+    res.render('user-shop', { pushdata, categories,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -561,10 +563,11 @@ const userGetFilterBelone = async function (req, res, next) {
 }
 const userGetFilterabovefive = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     abovefivehundred = await adminAddProduct.find({ $and: [{ productprice: { $gt: 500, $lt: 1000 } }, { status: { $nin: false } }] })
   pushdata = abovefivehundred
   console.log(pushdata,);
-  res.render('user-shop', { pushdata, categories,name })
+  res.render('user-shop', { pushdata, categories,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -573,10 +576,11 @@ const userGetFilterabovefive = async function (req, res, next) {
 }
 const userGetFilterabovethousand = async function (req, res, next) {
   try {
+    let fullname=req.session.name
     aboveonethousand = await adminAddProduct.find({ $and: [{ productprice: { $gt: 1000, $lt: 2000 } }, { status: { $nin: false } }] })
   pushdata = aboveonethousand
   console.log(pushdata,);
-  res.render('user-shop', { pushdata, categories,name })
+  res.render('user-shop', { pushdata, categories,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -585,10 +589,12 @@ const userGetFilterabovethousand = async function (req, res, next) {
 }
 const userGetFilterabovetwothousand = async function (req, res, next) {
   try {
+    
+    let fullname=req.session.name
     abovetwothousand = await adminAddProduct.find({ $and: [{ productprice: { $gt: 2000 } }, { status: { $nin: false } }] })
     pushdata = abovetwothousand
     console.log(pushdata,);
-    res.render('user-shop', { pushdata, categories,name })
+    res.render('user-shop', { pushdata, categories,fullname })
   } catch (error) {
     console.log(error);
     next()
@@ -652,7 +658,7 @@ const userGetWishListWithoutId = async function (req, res, next) {
 const UserGetWishListShow = async function (req, res, next) {
   try {
     user = req.session.user
-  
+    let fullname=req.session.name
     let displaywishlist = await userwishlistdata.aggregate([{ $match: { user: user } }, { $unwind: "$wishlistproduct" },
     { $project: { productId: "$wishlistproduct.productId" } },
     {
@@ -669,7 +675,7 @@ const UserGetWishListShow = async function (req, res, next) {
     ])
   
     console.log(displaywishlist);
-    res.render('wish-List', { displaywishlist,name })
+    res.render('wish-List', { displaywishlist,fullname })
   
   } catch (error) {
     console.log(error);
@@ -742,10 +748,10 @@ const userPostSignup = async function (req, res, next) {
   
       userdata.insertMany([data])
       req.session.user = data.username
-      name = data.fullname
+      req.session.name = data.fullname
       res.redirect('/')
     } else {
-      errormassege = "Account Already Exist Plese Login"
+      req.session.errormassege = "Account Already Exist Plese Login"
       res.redirect('/user-signup')
     }
   } catch (error) {
@@ -765,7 +771,7 @@ const userPostLogin = async function (req, res, next) {
     }
     const loginvalidator = await userdata.findOne({ username: userlogindata.username })
     if (loginvalidator == null) {
-      loginerr = "Invalid Username"
+      req.session.loginerr = "Invalid Username"
       res.redirect('/user-login')
     } else {
       if (loginvalidator.status == true) {
@@ -773,16 +779,17 @@ const userPostLogin = async function (req, res, next) {
         const passwordCheck = await bcrypt.compare(userlogindata.password, loginvalidator.password)
         if (passwordCheck == true) {
           req.session.user = userlogindata.username
-          name = loginvalidator.fullname
+          req.session.name = loginvalidator.fullname
   
           res.redirect('/')
         } else {
-          loginerr = "Invalid Password"
+          req.session.loginerr = "Invalid Password"
           res.redirect('/user-login')
         }
       } else {
+        req.session.loginerr = "Your Account Is Blocked"
         res.redirect('/user-login')
-        loginerr = "Your Account Is Blocked"
+        
       }
     }
   } catch (error) {
@@ -836,7 +843,7 @@ const userPostOtp = async function (req, res, next) {
     if (req.body.otp == otp&&req.body.otp!="") {
       let loger = await userdata.find({ useremail: otpEmail })
       req.session.user = loger[0].username
-      name = loger[0].fullname
+      req.session.name = loger[0].fullname
       console.log(loger);
       res.redirect('/')
     } else {
@@ -922,7 +929,7 @@ const UserPostPassChanegeVer = async function (req, res, next) {
       if (passupdate) {
         let changing = await userdata.find({ useremail: changeotpEmail })
         req.session.user = changing[0].username
-        name = changing[0].fullname
+        req.session.name = changing[0].fullname
         res.redirect('/')
       } else {
         res.redirect('/changepassword')
@@ -977,7 +984,7 @@ const userPostUpdateQuantity = async function (req, res, next) {
   try {
     user = req.session.user
     cartitems = req.body
-  
+    
     cartitems.count = parseInt(cartitems.count)
     let cartData = await usercartdata.findOneAndUpdate({ $and: [{ user: user }, { 'products.items': cartitems.product }] },
       { $inc: { 'products.$.quantity': cartitems.count } })
@@ -1163,7 +1170,7 @@ try {
       returnstatus: returnstatus
 
     }
-
+  req.session.orderss=orderss
 
     var options = {
       amount: grandtotal * 100,
@@ -1203,6 +1210,7 @@ try {
 }
 const userGetverifypayment = async function (req, res, next) {
   try {
+let orderss=req.session.orderss
     user = req.session.user
     let raz = req.body
     console.log(raz);
