@@ -52,6 +52,7 @@ const userGetHome = async function (req, res, next) {
     let pushbanner = await adminbannerdata.find({ status: true }).skip(1).limit(3)
     defaltimg = defaltimg[0].bannerpicture[0] 
     res.render('user-home', { pushdatahome, fullname, pushbanner, defaltimg }); 
+
   } catch (error) {
     console.log(error);
     next()
@@ -406,6 +407,7 @@ const UserGetUserLogOut = function (req, res, next) {
   try {
     if (req.session.user) {
       req.session.user = null
+      req.session.name=null
       res.redirect('/user-login')
     } else {
       res.redirect('/user-login')
