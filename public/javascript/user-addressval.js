@@ -9,8 +9,9 @@ function profileaddressvalidate() {
     const email = document.submission.email.value;
    
     const emailRegex= /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/gm
-    const phoneregex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
-    const pincodeRegex=   /^ [0-9]{1,6}$ / 
+    const phoneregex = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+    const pincodeRegex= /^\d{6}$/
+
     // const productpriceRegex = /^-?\d+(\.\d+)?$/
     //const stockRegex = /^-?\d+(\.\d+)?$/
     let productCheck = document.getElementsByClassName('text-danger')
@@ -74,7 +75,7 @@ function profileaddressvalidate() {
         return false
     }
     if(pincodeRegex.test(pincode)==false){
-        pass[2].innerHTML="Invalid email"
+        productCheck[5].innerHTML="Invalid Pincode"
         return false
     }
     if (phonenumber == '') {
@@ -82,7 +83,7 @@ function profileaddressvalidate() {
         return false
     }
     if(phoneregex.test(phonenumber)==false){
-        pass[2].innerHTML="Invalid Phone Number"
+        productCheck[6].innerHTML="Invalid Phone Number"
         return false
     }
     if (email == '') {
@@ -90,9 +91,10 @@ function profileaddressvalidate() {
         return false
     }
     if(emailRegex.test(email)==false){
-        pass[2].innerHTML="Invalid email"
+        productCheck[7].innerHTML="Invalid email"
         return false
     }
+    return true
 }
 
 function addclearmsg() {

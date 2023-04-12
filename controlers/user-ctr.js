@@ -62,7 +62,7 @@ const userGetSignup = function (req, res, next) {
     let user = req.session.user
     errormassege=req.session.errormassege
     res.render('user-signup', { errormassege })
-    errormassege = null;
+    req.session.errormassege = null;
   
   } catch (error) {
     console.log(error);
@@ -77,7 +77,7 @@ const userGetLogin = function (req, res, next) {
       res.redirect('/')
     } else {
       res.render("user-login", { loginerr })
-      loginerr = null;
+      req.session.loginerr = null;
     }
     
   } catch (error) {
@@ -115,7 +115,7 @@ const userGetOtpVerification = function (req, res, next) {
   try {
     otplogerr=req.session.otplogerr
   res.render('user-otp',{otplogerr})
-  otplogerr=null
+  req.session.otplogerr=null
   } catch (error) {
     console.log(error);
     next()
@@ -1288,6 +1288,18 @@ const UserPostSearch = async function (req, res, next) {
     console.log(error);
     next()
   }
+  
+  // try {
+  //   let Payload = req.body.Payload;
+  // console.log(Payload);
+  // let search = await adminaddproduct.find({ productname: { $regex: new RegExp('^' + payload + '.*', 'i') } }).exec();
+  // search=search.slice(0,10);
+  // console.log(search); 
+  // res.send({ Payload: search });
+  // } catch (error) {
+  //   console.log(error);
+  //   next()
+  // }
   
 }
 module.exports = {
