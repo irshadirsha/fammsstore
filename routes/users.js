@@ -44,7 +44,6 @@ router.get('/whishlistshow',session.sessioncheck,userget.UserGetWishListShow)
 router.get('/deletewishlist/:productid',userget.userGetDeleteWishlist)
 router.get('/addtowallet/:id/:grandtotal',session.sessioncheck,userget.userAddToWallet)
 
-
 /* post method. */
 router.post('/signup',userpost.userPostSignup )
 router.post('/login',userpost.userPostLogin)

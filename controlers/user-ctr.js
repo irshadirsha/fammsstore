@@ -18,7 +18,12 @@ const adminAddProduct = require('../models/adminaddmodels')
 const userwishlistdata = require('../models/wishlistModel')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
-
+let otpEmail
+let otp
+let singledata
+let changeotp
+let passerr
+let checkmailchange
 const req = require('express/lib/request')
 var instance = new Razorpay({
   key_id:process.env.KEY_ID,
@@ -27,14 +32,9 @@ var instance = new Razorpay({
 // let singleid
 // let loginerr
 // let errormassege
-let otpEmail
-let otp
-let singledata
-let changeotp
-let passerr
-let checkmailchange
-// let categoryid
-// let allproducts
+
+let categoryid
+let allproducts
 let changeotpEmail
 let proObj
 let totalprice
@@ -42,7 +42,7 @@ let passaddress
 let passerrmsg
 let coupenerr
 let carterr
-let categories
+ let categories
 /* GET method. */
 const userGetHome = async function (req, res, next) {
   try {
@@ -332,8 +332,8 @@ const UserChangeOtp = function (req, res, next) {
 }
 const UserGetAllProduct = async function (req, res, next) {
   try {
-     // let pushdata=await adminaddproduct.find({status:{$nin:false}})
-  // let categories=await adminproductcategory.find()
+  //    let pushdata=await adminaddproduct.find({status:{$nin:false}})
+  //  categories=await adminproductcategory.find()
   // console.log(allproducts);
   // res.render('user-shop',{pushdata,categories})
   res.redirect('/user-shop')
@@ -350,7 +350,7 @@ const UserGetUserShopProduct = async function (req, res, next) {
     user = req.session.user
     let fullname=req.session.name
   // if (user) {
-   let categoryid=req.session.categoryid
+  //  let categoryid=req.session.categoryid
   if (categoryid == null) {
     let pushdata = await adminaddproduct.find({ status: { $nin: false } })
     categories = await adminproductcategory.find()
@@ -375,7 +375,7 @@ const UserGetUserShopProduct = async function (req, res, next) {
 }
 const UsergetCategoryPass = function (req, res, next) {
   try {
-    req.session.categoryid = req.params.addcategory
+    categoryid = req.params.addcategory
 
   res.redirect('/user-shop')
   } catch (error) {
@@ -675,7 +675,7 @@ const UserGetWishListShow = async function (req, res, next) {
       $project: { productid: '$wishlistproduct.productid', adminaddproduct: { $arrayElemAt: ['$wishlistproduct', 0] } }
     }
     ])
-  
+     
     console.log(displaywishlist);
     res.render('wish-List', { displaywishlist,fullname })
   
