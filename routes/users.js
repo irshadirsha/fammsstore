@@ -43,6 +43,7 @@ router.get('/wish-List',userget.userGetWishListWithoutId)
 router.get('/whishlistshow',session.sessioncheck,userget.UserGetWishListShow)
 router.get('/deletewishlist/:productid',userget.userGetDeleteWishlist)
 router.get('/addtowallet/:id/:grandtotal',session.sessioncheck,userget.userAddToWallet)
+router.get('/cancelorder/:id',userget.UserGetCancelOrder)
 
 /* post method. */
 router.post('/signup',userpost.userPostSignup )

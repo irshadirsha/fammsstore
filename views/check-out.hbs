@@ -67,7 +67,7 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav" style="">
                      <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                      </li>
                      {{!-- <li class="nav-item dropdown" style="margin-right: -1px;">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
@@ -224,8 +224,8 @@
             <a href="/editaddress" style="color: white;" class="btn btn-dark  d-block " type="submit">Select Address</a>
             {{!-- //-----------------------------------------second
             model-----------------------------------------------// --}}
-
-            <form id="checkout-form" action="" method="">
+  
+            <form id="checkout-form" action="" method="" >
                 <div class="row">
 
                     <div class="col-lg-8">
@@ -249,11 +249,7 @@
                                     <p>Land Mark <span>*</span></p>
                                     <input type="text" name="landmark" value="{{addressdetails.landmark}}">
                                 </div>
-                                {{!-- <div class="checkout__form__input">
-                                    <p>Address <span>*</span></p>
-                                    <input type="text" value="{{address}}" placeholder="Street Address">
-
-                                </div> --}}
+                              
                                 <div class="checkout__form__input">
                                     <p>Town <span>*</span></p>
                                     <input type="text" name="town" value="{{addressdetails.town}}">
@@ -279,33 +275,7 @@
                                     <input type="text" name="email" value="{{addressdetails.email}}">
                                 </div>
                             </div>
-                            {{!-- <div class="col-lg-12">
-                                <div class="checkout__form__checkbox">
-                                    <label for="acc">
-                                        Create an acount?
-                                        <input type="checkbox" id="acc">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p>Create am acount by entering the information below. If you are a returing
-                                        customer login at the <br />top of the page</p>
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Account Password <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                                <div class="checkout__form__checkbox">
-                                    <label for="note">
-                                        Note about your order, e.g, special noe for delivery
-                                        <input type="checkbox" id="note">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="checkout__form__input">
-                                    <p>Oder notes <span>*</span></p>
-                                    <input type="text"
-                                        placeholder="Note about your order, e.g, special noe for delivery">
-                                </div>
-                            </div> --}}
+                            
 
                         </div>
                     </div>
@@ -316,7 +286,7 @@
                                 <ul>
                                     <li>
                                         <span class="top__text">Wallet Amount</span>
-                                        <span class="top__text__right text-danger">₹{{walletpass}}</span>
+                                        <span style="color: red;" class="top__text__right ">₹{{walletpass}}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -383,6 +353,7 @@
                             </div>
                             <button type="submit" class="site-btn">Place oder</button>
                         </div>
+                           <p style="font-weight:600;  font-size:15px" id="error-message" class="text-danger"></p>
                     </div>
                 </div>
             </form>
@@ -390,7 +361,7 @@
     </section>
     
     <script>
-        $("#checkout-form").submit((e) => {
+         $("#checkout-form").submit((e) => {
             e.preventDefault()
             $.ajax({
                 url: '/orderlistpass',
@@ -408,7 +379,7 @@
 
 
             })
-        })
+        }) 
         function razorpayPayment(order) {
             var options = {
                 "key": "rzp_test_xbdn27HLaTgcWx", // Enter the Key ID generated from the Dashboard
@@ -472,12 +443,12 @@
                 <div class="col-md-4">
                     <div class="full">
                         <div class="logo_footer">
-                            <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
+                            <a href="#"><img width="150" src="images/logo.png" alt="#" /></a>
                         </div>
                         <div class="information_f">
-                            <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                            <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                            <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                           <p><strong>ADDRESS:</strong> 28 White tower, Street Name Mangalore City, INDIA</p>
+                            <p><strong>TELEPHONE:</strong> 7676618749</p>
+                            <p><strong>EMAIL:</strong> Irshadalike@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -561,7 +532,7 @@
     <script src="/product/js/jquery.nicescroll.min.js"></script>
     <script src="/product/js/main.js"></script>
 
-
+    <script src="/javascript/checkout-addval.js"></script>
 
 </body>
 

@@ -73,6 +73,12 @@ const adminOrderSchema=new mongoose.Schema({
     },
     admin:{
         type:String,
+    },
+    statdelivered:{
+        type:String,      
+    },
+    new:{
+        type:String,
     }
 
 })

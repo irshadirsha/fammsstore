@@ -489,6 +489,7 @@ const UserGetAddressPass = async function (req, res, next) {
   pasid = req.params.indexof
   console.log(pasid);
   let passadd = await useraddress.findOne({ user: user })
+  console.log(passadd);
   passaddress = passadd.address[pasid]
   console.log(passaddress);
   res.redirect('/check-out')
@@ -500,7 +501,8 @@ const UserGetAddressPass = async function (req, res, next) {
 }
 const userGetCpange = function (req, res, next) {
   try {
-    res.render('user-change', { passerrmsg })
+    let fullname=req.session.name
+    res.render('user-change', { passerrmsg,fullname })
   passerrmsg = null;
   } catch (error) {
     console.log(error);
@@ -513,8 +515,9 @@ const UserOrderList = async function (req, res, next) {
     let fullname=req.session.name
     user = req.session.user
     let orderdatauser = await userorder.find({ ordereduser: user })
-   
+   console.log("ppppppppppppppppppppppppppppppppppppppp");
     console.log(orderdatauser);
+
     res.render('order-list', { orderdatauser,fullname })
   } catch (error) {
     console.log(error);
@@ -703,7 +706,7 @@ const userGetDeleteWishlist = async function (req, res, next) {
   }
   
 }
-const userAddToWallet = async function (req, res, next) {
+const     userAddToWallet = async function (req, res, next) {
   try {
     user = req.session.user
   addwallet = req.params.grandtotal
@@ -719,10 +722,6 @@ const userAddToWallet = async function (req, res, next) {
 
   console.log("kkkkkkkkkkkkkkkkkkkkkk");
 
-  //  await userorder.updateOne({user:user},{$set:{'product.returnstatus':false}})
-  // let hh=await userorder.updateOne({$and:[{user:user},{produt:{$in:[returnstatus]}}]},{$set:{returnstatus:false}})
-
-
   res.redirect('/order-list') 
   } catch (error) {
     console.log(error);
@@ -730,7 +729,16 @@ const userAddToWallet = async function (req, res, next) {
   }
   
 }
-
+const UserGetCancelOrder=async function(req,res,next){
+  user=req.session.user
+    ordercancelid=req.params.id 
+    console.log(ordercancelid);
+    // hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+ await userorder.updateOne({_id:new ObjectId(ordercancelid)},{$set:{status:'Canceled'}})
+ await userorder.updateOne({ _id:new ObjectId(ordercancelid)},{$set:{new:'wow'}})
+//  await userorder.updateOne({_id:ordercancelid},{$set:{new:'wow'}})
+  res.redirect('/order-list')
+  }
 //-----------------------------------* POST USER METHOD . *--------------------------------------//
 const userPostSignup = async function (req, res, next) {
   try {
@@ -742,7 +750,7 @@ const userPostSignup = async function (req, res, next) {
       status: true,
       wallet: 0
     }
-  
+     
     let indatabase = await userdata.findOne({ username: data.username })
     let emailcheck = await userdata.findOne({ useremail: data.useremail })
     if (indatabase == null && emailcheck == null) {
@@ -1084,8 +1092,8 @@ const UserProfilePassChange = async function (req, res, next) {
   try {
     user = req.session.user
   paswrd = req.body
-  let findpass = await userdata.findOne({ username: user })
-
+  let findpass = await userdata.findOne({$and:[{username: user},{password:paswrd.password}]})
+console.log(findpass);
   if (findpass == null) {
     res.redirect('/user-change')
     passerrmsg = "Current Password Is Wrong"
@@ -1313,6 +1321,6 @@ module.exports = {
   UserPostShopCart, userPostUpdateQuantity, UserGerDeleteCart, UserPostAddress, userGetOrderStatus, userGetEditAddress,
   UserOrderList, userOrderedProductData, UserOrderProductwithoutId, userGetFilterBelone, userGetFilterabovefive, userGetDeleteWishlist,
   userGetFilterabovethousand, userGetFilterabovetwothousand, userGetWishList, userGetWishListWithoutId, UserGetWishListShow,
-  userAddToWallet,
+  userAddToWallet,UserGetCancelOrder,
 }
 

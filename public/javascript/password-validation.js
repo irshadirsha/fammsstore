@@ -22,7 +22,7 @@ function passwordvald(){
         return false
     }
     if(passwordRegex.test(password)==false){
-        pass[0].innerHTML="Enter 1 Capital letter And number Only"
+        pass[0].innerHTML="Enter 1 Capital letter And number,minimum 8 letters"
         return false
     }
     if(confirm_password==""){

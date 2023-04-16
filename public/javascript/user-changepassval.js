@@ -20,7 +20,7 @@ function changevalidateform(){
         return false
     }
     if(passwordRegex.test(password)==false){
-        pass[0].innerHTML="Enter propper password"
+        pass[0].innerHTML="Enter 1 Capital letter And number minimum 8 letters"
         return false
     }
     if(newpassword==""){
@@ -28,11 +28,11 @@ function changevalidateform(){
         return false
     }
     if(newpasswordRegex.test(newpassword)==false){
-        pass[1].innerHTML="Enter propper password"
+        pass[1].innerHTML="Enter 1 Capital letter And number,minimum 8 letters"
         return false
     }
     if(confirmpassword==""){
-        pass[2].innerHTML="The username is empty"
+        pass[2].innerHTML="Confirm Password Is Empty"
         return false
     }
     if(confirmpassword!=newpassword){

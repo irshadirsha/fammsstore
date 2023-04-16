@@ -120,8 +120,10 @@ const adminGetCategory = async function (req, res, next) {
 const adminDeleteProduct = async function (req, res, next) {
     try {
         let id = req.params.id
+        console.log("parammmsssssssssssssssssssidd",id);
         await adminaddproduct.updateOne({ _id: id }, { $set: { status: false } })
-        res.redirect('/admin-product') 
+        // res.redirect('/admin-product') 
+        res.json({status:true})
     } catch (error) {
         console.log(error)  
         next()
@@ -160,7 +162,8 @@ const adminGetRemoveCategory = async function (req, res, next) {
     try {
         let removid = req.params.id
         await adminproductcategory.deleteOne({ _id: new ObjectId(removid) })
-        res.redirect('/admin-category')
+        // res.redirect('/admin-category')
+        res.json({status:true})
     } catch (error) {
         console.log(error)  
         next()  
@@ -205,6 +208,7 @@ const adminGetDeleteuser = async function (req, res, next) {
         userid = req.params.id
         await userdata.deleteOne({ _id: new ObjectId(userid) })
         res.redirect('/admin-viewuser')
+        // res.json({status:true})
     } catch (error) {
         console.log(error)  
         next() 
@@ -381,6 +385,7 @@ const adminGetDeliveredOrder = async function (req, res, next) {
         deliveredid = req.params.id
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     console.log(deliveredid);
+    await userorder.updateOne({ _id: new ObjectId(deliveredid) }, { $set: { statdelivered: 'fun' } })
     await userorder.updateOne({ _id: new ObjectId(deliveredid) }, { $set: { status: 'delivered' } })
     let newdate = new Date().toLocaleDateString()
     await userorder.updateOne({ _id: new ObjectId(deliveredid) }, { $set: { salesdate: newdate } })

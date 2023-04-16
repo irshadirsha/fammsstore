@@ -168,47 +168,8 @@
       </header>
    <br>
    <br>
-   {{!-- <div class="container">
-      <table class="table">
-         <thead>
-            <tr>
-               <th>Index</th>
-               <th>Image</th>
-               <th>Product Name</th>
-               <th>Brand</th>
-               <th>Price</th>
-               <th>Total</th>
-               <th>Action</th>
-            </tr>
-         </thead>
-         <tbody>
-            {{#each userorderstatus}}
-            <tr>
-               <th>{{@index}}</th>
-               <td><img style="width:200px;height: 200px;" src="/productimage/{{product.productimage.[0]}}" alt=""></td>
-               <td>{{product.productname}}</td>
-               <td>{{product.productbrand}}</td>
-               <td>{{product.productprice}}</td>
-               <td>{{grandtotal}}</td>
-              
-
-               {{#if returnstatus}}
-                 
-                 <td><button style="margin-top: 2px;" type="button"
-                     onclick="location.href='/addtowallet/{{_id}}/{{grandtotal}}'"
-                     class="btn btn-primary">Return</button></td>
-               
-               {{else}}
  
-                <td>Successfully Returned</td> 
-               {{/if}}
-            </tr>
-            {{/each}}
-         </tbody>
-      </table>
-   </div> --}}
-
-   {{#each userorderstatus}}
+   {{!-- {{#each userorderstatus}}
     <div class="row">
         <div class="container">
             <div class="col-12">
@@ -235,8 +196,36 @@
         </div>
     </div>
     {{/each}}
+ --}}
 
-
+{{#each userorderstatus}}
+<div class="row">
+  <div class="container">
+    <div class="col-12">
+      <div class="p-3">
+        <div class="d-flex align-items-center justify-content-between border rounded p-3 mb-3">
+          <div class="d-flex">
+            <div class="mr-3">
+              <img src="/productimage/{{product.productimage.[0]}}" alt="{{product.productname}}" width="120px">
+            </div>
+            <div>
+              <h4 class="mb-2">{{product.productname}}</h4>
+              <div class="text-muted mb-2">{{product.productbrand}}</div>
+              <div class="text-muted mb-2">{{product.productcategory}}</div>
+              <div class="d-flex">
+                <div class="mr-4">Price: <span class="text-primary font-weight-bold">Rs. {{product.productprice}}</span></div>
+               </div>
+               <div class="d-flex">
+                <div>Total: <span class="text-primary font-weight-bold">Rs. {{grandtotal}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
 
    <br>
    <br>
@@ -246,12 +235,12 @@
             <div class="col-md-4">
                <div class="full">
                   <div class="logo_footer">
-                     <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
+                     <a href="#"><img width="150" src="images/logo.png" alt="#" /></a>
                   </div>
                   <div class="information_f">
-                     <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                     <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                     <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                    <p><strong>ADDRESS:</strong> 28 White tower, Street Name Mangalore City, INDIA</p>
+                            <p><strong>TELEPHONE:</strong> 7676618749</p>
+                            <p><strong>EMAIL:</strong> Irshadalike@gmail.com</p>
                   </div>
                </div>
             </div>
@@ -311,6 +300,13 @@
       </div>
    </footer>
    <!-- footer end -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+   <!-- popper js -->
+   <script src="js/popper.min.js"></script>
+   <!-- bootstrap js -->
+   <script src="js/bootstrap.js"></script>
+   <!-- custom js -->
+   <script src="js/custom.js"></script>
 </body>
 
 </html>
