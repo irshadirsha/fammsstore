@@ -278,11 +278,11 @@
 
                      {{else}}
                      {{#if new}}
-                     <h6 class="text-success"><span>Successfully Canceled</span></h6>
+                     <h6 class="text-success"><span>Order Canceled</span></h6>
                      {{else}}
                      <div class="d-flex flex-row-reverse align-items-center">
-                        <button href="/cancelorder/{{_id}}"
-                           class="btn btn-outline-info btn-sm btn-danger btn-hover-danger m-1">cancel</button>
+                        <a href="/cancelorder/{{_id}}"
+                           class="btn btn-outline-info btn-sm btn-danger btn-hover-danger m-1">cancel</a>
 
                      </div>
                      {{/if}}
@@ -296,7 +296,7 @@
    {{/each}}
 
 
-   {{!--
+{{!--    
    <div class="container my-3 border">
       {{#each orders}}
       <div class="card border-0 mb-3">
@@ -363,8 +363,8 @@
          </div>
       </div>
       {{/each}}
-   </div>
-   --}}
+   </div> --}}
+  
    <style>
       .btn-hover-danger:hover {
          background-color: #dc3545 !important;
