@@ -50,8 +50,8 @@ const adminDashBord = async function (req, res, next) {
             console.log("rrrrrrrrrrrrrrrrrrrrrrr");
             console.log(ordercount);
             console.log(usercount);
-            let pendingordercount = await userorder.findOne({ status: "Pending" }).count()
-            console.log(pendingordercount);
+            let pendingordercount = await userorder.findOne({ status: "shipped" }).count()
+            console.log("counttttttttttttttttttt",pendingordercount);
             res.render('admin-dashbord', { usercount, ordercount, totalrevenue, pendingordercount ,blockeduser})  
     } catch (error) {
         console.log(error)  

@@ -1142,9 +1142,9 @@ try {
   }
   let subgrandtotal = grandtotal
   grandtotal += 84
-
+      
   coupensid = req.session.coupen
-  let status = req.body.paymentmethod === "COD" ? "Placed" : "Pending";
+  let status = req.body.paymentmethod === "COD" ? "shipped" : "shipped";
   let delivery = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
