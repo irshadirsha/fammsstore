@@ -1299,17 +1299,7 @@ const UserPostSearch = async function (req, res, next) {
     next()
   }
   
-  // try {
-  //   let Payload = req.body.Payload;
-  // console.log(Payload);
-  // let search = await adminaddproduct.find({ productname: { $regex: new RegExp('^' + payload + '.*', 'i') } }).exec();
-  // search=search.slice(0,10);
-  // console.log(search); 
-  // res.send({ Payload: search });
-  // } catch (error) {
-  //   console.log(error);
-  //   next()
-  // }
+  
   
 }
 module.exports = {
