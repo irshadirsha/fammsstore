@@ -40,10 +40,10 @@ const adminDashBord = async function (req, res, next) {
             let blockeduser= await userdata.find({status:false}).count()
             console.log(blockeduser);
             let ordercount = await userorder.findOne({ status: "delivered" }).count()
-            let revenue = await userorder.aggregate([{ $match: { status: "delivered" } }, { $unwind: "$product" }, { $group: { _id: null, sum: { $sum: "$product.totalprice" } } }, { $project: { _id: 0 } }])
+            let revenue = await userorder.aggregate([{ $match: { status: "delivered" } }, { $unwind:"$product" }, { $group: { _id: null, sum: { $sum: "$product.totalprice" } } }, { $project: { _id: 0 } }])
             console.log(revenue);
             if (revenue.length != 0) {
-                totalrevenue = revenue[0].sum
+                totalrevenue = revenue[0].sum 
             } else {
                 totalrevenue = 0
             }

@@ -157,7 +157,7 @@
             <div class="container-fluid">
                 <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
                     <div class="col-md-2">
-                        {{!-- <img class="d-none d-md-flex" src="https://i.imgur.com/R8QhGhk.png" width="100"> --}}
+                  
                     </div>
                     <div class="col-md-8">
                         <div class="d-flex form-inputs">
@@ -190,6 +190,7 @@
                     return;
                 }
                 payload.forEach((item, index) => {
+                    if (index > 3) return;
                     if (index > 0) searchResults.innerHTML += '<hr>';
                     searchResults.innerHTML += `<div  onclick="window.location.href='/product-details/${item._id}'"style="display: flex;justify-content: center;"><img src='/productimage/${item.productimage[0]}' width='100rem'></div><div class="imgsrc"><p>${item.productname}</p> </div><div class="imgsrc"><p>₹${item.productprice}</p></div><div class="imgsrc"><p>${item.productbrand}</p></div>`
                 })
