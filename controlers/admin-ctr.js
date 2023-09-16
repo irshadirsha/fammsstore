@@ -538,7 +538,8 @@ const adminPostLogin = async function (req, res, next) {
             adminusername: req.body.adminusername,
             adminpassword: req.body.adminpassword
         }
-        let logdata = await admindata.findOne({ adminusername: logindata.adminusername })
+        let logdata = await admindata.findOne({ adminusername:logindata.adminusername })
+        console.log("++++++++",logdata)
         if (logdata == null) {
             errmsg = "Invalid Username and Password "
             res.redirect('/admin-login')
