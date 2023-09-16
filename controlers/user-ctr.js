@@ -435,7 +435,6 @@ const UserGerDeleteCart = async function (req, res, next) {
 }
 const  userGetOrderStatus = async function (req, res, next) {
   try {
-    console.log("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
     if(req.session.quant&&req.session.productId){
       quant=-req.session.quant
       ProID=req.session.productId
