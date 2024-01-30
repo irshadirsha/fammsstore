@@ -30,7 +30,7 @@ function loginval(){
         return false
     }
     if(passwordRegex.test(password)==false){
-        pass[1].innerHTML="Enter 1 Capital letter And number,minimum 8 letters"
+        pass[1].innerHTML="Enter 1 Capital letter,1 number, No need special charecter"
         return false
     }
     return true
